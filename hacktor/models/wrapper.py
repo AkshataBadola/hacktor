@@ -8,6 +8,7 @@ from .eliza import ElizaAgent
 from ._ollama import OllamaModel
 from hacktor.webapp.gradio import GradioUtils
 from hacktor.webapp.model import GradioAppModel
+from .open_router import OpenRouterAIModel
 
 import importlib
 # Check if torch is installed, then import HFModelFactory
@@ -22,6 +23,7 @@ class Registry(Enum):
     HF_SPACE = "HF_SPACE"
     ELIZA = "ELIZA"
     OLLAMA = "OLLAMA"
+    OPEN_ROUTER = "OPEN_ROUTER"
 
     @classmethod
     def list_options(cls):
@@ -46,7 +48,9 @@ class LLMModel:
         elif registry == Registry.ELIZA:
             self.model = ElizaAgent(model_id)   
         elif registry == Registry.OLLAMA:
-            self.model = OllamaModel(model_id)        
+            self.model = OllamaModel(model_id)
+        elif registry == Registry.OPEN_ROUTER:
+            self.model = OpenRouterAIModel(model_id)        
         else:
             raise Exception("Undefined registry" + registry)
 
