@@ -7,7 +7,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from .exceptions import NoneResultException
 from .utils import escape_special_characters
 from .base import BaseModel
-
+import openai
+ 
 class OpenAIModel(BaseModel):
     """
     Model that talks to the OpenAI service to interact with models.
